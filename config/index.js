@@ -13,9 +13,7 @@ module.exports = {
     proxyTable: {
       '/apis': {
         // target: 'http://mobile.dfcshop.com',  // 接口域名
-        target: 'http://testmobile.dfcshop.com',  // 接口域名
-        // http://testapi.dfcshop.com:8117/dfcapi api 接口域名
-        // target: 'http://testapi.dfcshop.com:8117/dfcapi',  // 接口域名
+        target: 'http://test.jidianyouqian.com:8080',  // 接口域名
         changeOrigin: true,  //是否跨域
         pathRewrite: {
           '^/apis': ''   //需要rewrite的,

@@ -1,32 +1,15 @@
 import axios from 'axios';
 import https from 'https';
-import Cookies from 'js-cookie';
-import querystring from 'querystring';
-
 // api root
-export const API_VERSION = '2.0';
-export const apiRoot = `/apis/dfcapi/api/${API_VERSION}`;
+export const apiRoot = `/apis/loan-market-cps/`;//cxwap
 
-const newRquest = axios.create({
+
+var newRquest = axios.create({
   baseURL: apiRoot,
   httpsAgent: new https.Agent({ keepAlive: true, rejectUnauthorized: false }),
   transformRequest(params) {
-    const req = {
-      data: JSON.stringify(params),
-      apikey: '03892de79f9611e8b36c00163e0e500c',
-      token: window.localStorage.token,
-    };
 
-    const token = Cookies.get('token');
-    if (token) {
-      req.token = token;
-      // req.token = 'UDEBMAJjVmdUZV88CG1eYg5oVTYGewQ7AjEGMAcwWC0FZAQ0BGcDMQEtAWsKelliAnxRMQN+BToAMlBvVH0HdFAqAS8CZFZlVG1fNA==';
-
-    } else {
-      req.token = 'UDEBMAJjVmdUZV88CG1eYg5oVTYGewQ7AjEGMAcwWC0FZAQ0BGcDMQEtAWsKelliAnxRMQN+BToAMlBvVH0HdFAqAS8CZFZlVG1fNA==';
-    }
-
-    return querystring.stringify(req);
+    return JSON.stringify(params);
   },
 });
 
@@ -59,17 +42,16 @@ newRquest.interceptors.request.use(
 newRquest.interceptors.response.use(
   (response) => {
     const res = response.data;
-    const { status } = res;
+    const { msg, status } = res;
 
     if (status !== 0) {
-      // console.log('msg', msg);
+      console.log('msg', msg);
     }
 
     return res;
   },
   error => Promise.reject(error),
 );
-
-newRquest.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+newRquest.defaults.headers.post['Content-Type'] = 'application/json';
 
 export default newRquest;
