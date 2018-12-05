@@ -4,7 +4,9 @@
 
 <script>
   import {
-    getCountPageload
+    getCountPageload,
+    getCheckPhone,
+    getCheckPhone2
   } from '@/api/test'
 
   export default {
@@ -17,11 +19,22 @@
 
     methods: {
       test() {
-        var data = {}
-        getCountPageload().then((res) => {
+        // var data = {}
+        // getCountPageload().then((res) => {
+        //   alert("test" + JSON.stringify(res));
+        //
+        // })
+        var data = {
+          phone: '15829554591'
+        }
+        getCheckPhone2(data).then((res) => {
           alert("test" + JSON.stringify(res));
 
         })
+        // getCheckPhone('15829554591').then((res) => {
+        //   alert("test" + JSON.stringify(res));
+        //
+        // })
       },
     },
 

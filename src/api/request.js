@@ -53,5 +53,6 @@ newRquest.interceptors.response.use(
   error => Promise.reject(error),
 );
 newRquest.defaults.headers.post['Content-Type'] = 'application/json';
+newRquest.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 export default newRquest;
