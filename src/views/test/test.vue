@@ -18,12 +18,8 @@
     },
 
     methods: {
+      //from表单调用接口形式 application/x-www-form-urlencoded
       test() {
-        // var data = {}
-        // getCountPageload().then((res) => {
-        //   alert("test" + JSON.stringify(res));
-        //
-        // })
         var data = {
           phone: '15829554591'
         }
@@ -31,15 +27,30 @@
           alert("test" + JSON.stringify(res));
 
         })
-        // getCheckPhone('15829554591').then((res) => {
-        //   alert("test" + JSON.stringify(res));
-        //
-        // })
+      },
+      //from表单调用接口形式 application/x-www-form-urlencoded
+      test2() {
+
+        getCheckPhone('15829554591').then((res) => {
+          alert("test" + JSON.stringify(res));
+
+        })
+      },
+
+      //application/json
+      test3() {
+        var data = {}
+        getCountPageload(data).then((res) => {
+          alert("test" + JSON.stringify(res));
+
+        })
+
+
       },
     },
 
-    //created创建完毕状态
     created() {
+
       this.test()
     },
 

@@ -6,7 +6,7 @@ let base = '/apis/loan-market-cps/';
 let headers = {headers: {"Content-Type": "multipart/form-data",'token':window.localStorage.token}}
 
 let headers1 = {headers: {'Content-Type':'application/json; charset=utf-8','token':window.localStorage.token}}
-let headers2 = {headers: {"Content-Type": "X-WWW-FORM-URLENCODED",'token':window.localStorage.token}}
+let headers2 = {headers: {"Content-Type":'application/x-www-form-urlencoded','token':window.localStorage.token}}
 
 //test
 export function getCountPageload(params) {
@@ -15,6 +15,8 @@ export function getCountPageload(params) {
 export function getCheckPhone(phone,code) {
   return request.post('user/checkPhone?phone='+phone+"&code="+code);
 }
+
+//application/x-www-form-urlencoded   用来序列化qs.stringify()
 export const getCheckPhone2 = params =>{
-  return axios.post(`${base}/user/checkPhone`, qs.stringify(params),headers1)
+  return axios.post(`${base}/user/checkPhone`, qs.stringify(params),headers2)
 }
